@@ -1,0 +1,90 @@
+
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+
+$u: 6px;
+
+body  {
+    font-family: 'Helvetica Neue', Helcetica, Arial, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.Site {
+    display: table;
+    width: 100%;
+    min-height: 100vh;
+
+
+    &-nav {
+        background: #FFF;
+    }
+
+    &-body {
+        width: calc(100% - 200px);
+    }
+}
+
+
+.Header {
+    position: relative;
+    padding: $u * 3;
+
+    &-logo,
+    &-menu,
+    &-tagline {
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    &-logo {
+        width: 64px;
+        height: 56px;
+    }
+
+    &-lang {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    &-tagline,
+    &-menu {
+        margin-left: $u * 4;
+    }
+}
+
+
+.Menu {
+    &-link {
+        padding-left: $u;
+        padding-right: $u;
+        text-transform: uppercase;
+    }
+}
+
+
+.Link {
+    &.is-current {
+        color: #999;
+        text-decoration: none;
+    }
+}
