@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { site, languages } from '../data';
+import { site } from '../data';
 import routes from './routes';
 import cx from 'classnames';
 

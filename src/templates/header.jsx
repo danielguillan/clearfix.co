@@ -1,5 +1,4 @@
 import React from 'react';
-import { site } from '../../data';
 import { linkTo, Link, SwitchLangLink } from 'utils';
 
 export default ({metadata}) => {

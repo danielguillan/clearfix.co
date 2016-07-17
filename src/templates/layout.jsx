@@ -2,7 +2,7 @@ import React from 'react';
 import deburr from 'lodash/deburr';
 import kebabCase from 'lodash/kebabCase';
 
-import { pages, posts, site } from '../../data';
+import { site } from '../../data';
 import Header from './header.jsx';
 import Footer from './footer.jsx';
 

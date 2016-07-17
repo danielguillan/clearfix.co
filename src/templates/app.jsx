@@ -1,5 +1,5 @@
 import React from 'react';
-import { pages, posts, languages } from '../../data';
+import { pages } from '../../data';
 import Layout from './layout.jsx';
 import Page from './page.jsx';
 
