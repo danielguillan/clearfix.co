@@ -1,23 +1,46 @@
 import React from 'react';
-import { linkTo, Link, SwitchLangLink } from 'utils';
+import cx from 'classnames';
+import { Link, SwitchLangLink } from 'utils';
+
+
+function Logo(props) {
+  let { tagline } = props;
+
+  return (
+    <div className={cx('Logo', props.className)}>
+      <h1 className="Logo-brand">Clear<span/>fix</h1>
+      {tagline && <p className="Logo-tagline">{tagline}</p>}
+    </div>
+  );
+}
 
 export default ({metadata}) => {
   let { lang, t } = metadata;
 
   return (
     <header className='Header'>
-      <SwitchLangLink className='Header-lang' to={lang === 'es' ? 'en' : 'es'} metadata={metadata} />
-
-      <a href='./' className='Header-logo'>
-        <img src={require('../images/clearfix-logo.png')} />
-      </a>
-
-      <p className='Header-tagline'>{t._.tagline}</p>
-
-      <nav className='Header-menu Menu'>
-        <Link className={'Menu-link'} to={''} metadata={metadata}>Home</Link>
-        <Link className={'Menu-link'} to={'about'} metadata={metadata}>About</Link>
-      </nav>
+      <div className='Topbar'>
+        <p className='Topbar-topics'>
+          {`Let's talk about`}<span>performance</span>
+        </p>
+        <nav className='Topbar-langNav'>
+          <SwitchLangLink to={lang === 'es' ? 'en' : 'es'} metadata={metadata} />
+        </nav>
+      </div>
+      <div className='Intro'>
+        <Logo className='Intro-logo' tagline={t._.logo_tagline} />
+      </div>
     </header>
   )
 }
+
+
+// <div className='Header-logo'>
+//   <a href='./'>
+//     <img src={require('../images/clearfix-logo.png')} />
+//   </a>
+// </div>
+
+// <div className='Header-tagline'>
+//   <p>{t._.tagline}</p>
+// </div>

@@ -49,14 +49,10 @@ export default ({ children, metadata }) => {
         <link href={site.baseurl + '/static.css'} rel='stylesheet' type='text/css' />
       </head>
       <body>
-        <div className={'Site'}>
-          <div className={'Site-nav'}>
-            <Header metadata={metadata} />
-          </div>
-          <div className={'Site-body'}>
-            {children}
-            <Footer metadata={metadata} />
-          </div>
+        <div className={'Document'}>
+          <Header metadata={metadata} />
+          {children}
+          <Footer metadata={metadata} />
         </div>
       </body>
     </html>
