@@ -111,7 +111,7 @@ function baseConfig() {
     },
     postcss: [autoprefixer],
     plugins: [
-      // new webpack.NoErrorsPlugin(),
+      new webpack.NoErrorsPlugin(),
       extractMainCSS,
       new StaticWebpackPlugin('static.js'),
       new Clean(['public'])
