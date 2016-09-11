@@ -111,7 +111,6 @@ function baseConfig() {
     },
     postcss: [autoprefixer],
     plugins: [
-      new webpack.NoErrorsPlugin(),
       extractMainCSS,
       new StaticWebpackPlugin('static.js'),
       new Clean(['public'])
@@ -147,7 +146,10 @@ function devConfig() {
     return webpackMerge(baseConfig(), {
         debug: true,
         devtool: 'cheap-module-eval-source-map',
-        devServer: devServerConfig()
+        devServer: devServerConfig(),
+        plugins: [
+          new webpack.NoErrorsPlugin()
+        ]
     });
 }
 

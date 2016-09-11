@@ -1,4 +1,4 @@
-import { site, pages, posts, languages } from '../data';
+import { site, pages, languages } from '../data';
 
 
 const ROUTES = Object.keys(pages);
