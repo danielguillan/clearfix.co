@@ -1,0 +1,32 @@
+.Home {
+    @extend %section--centered;
+    @include clearfix;
+    @include background-grid;
+
+    padding-top: $u * 5;
+
+    &-upcoming {
+        @include float-span(2, 'last');
+
+        margin-top: -100px;
+        text-align: right;
+    }
+
+    &-text {
+        @include grid-span(4, 2);
+
+        font-size: em(20px);
+    }
+
+    @include layout-at(bk-cols('medium'), bk-mq('medium')) {
+        &-upcoming {
+            @include float-span(2, 'last');
+
+            font-size: em(24px);
+        }
+
+        &-text {
+            @include grid-span(6, 2);
+        }
+    }
+}

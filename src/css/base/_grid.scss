@@ -1,0 +1,13 @@
+// Configure grid settings
+@include sgs-change('debug', true);
+@include sgs-change('include border box', true);
+@include sgs-change('include clearfix', false);
+@include sgs-change('background grid color', #DDD);
+
+// Default small grid (mobile first)
+@include add-grid(bk-cols('small'));
+@include add-gutter(bk-gutter('small'));
+@include add-gutter-style('split');
+
+// Responsive grid
+@include add-grid(bk-cols('medium') at bk-mq('medium'));

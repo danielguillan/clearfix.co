@@ -1,0 +1,38 @@
+.UpcomingEvent {
+    $padding: em(18px);
+    // box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    // width: 100%;
+    max-width: 200px;
+    min-width: 100px;
+    padding: $padding;
+    font-size: em(20px);
+    text-align: center;
+    color: #FFF;
+
+    &-title {
+        font-size: 1em;
+        margin: 0;
+    }
+
+    &-date {
+        font-size: 0.8em;
+        margin: 0;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        // instead of a fixed height
+        padding-top: calc(100% + #{$padding * 2});
+        border-radius: 100%;
+        background-color: $brand-color;
+    }
+}

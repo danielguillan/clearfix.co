@@ -1,294 +1,52 @@
+// ----------------------------------------------------------------------------
+// Vendor
+// ----------------------------------------------------------------------------
+
+@import '~normalize-scss';
 @import '~breakpoint-sass';
 @import '~singularitygs';
 @import '~singularitygs/stylesheets/singularitygs/helpers/clearfix';
 
+// ----------------------------------------------------------------------------
+// Settings
+// ----------------------------------------------------------------------------
 
-$default-font-size: 16px;
+@import 'settings';
 
-@function em($pixels, $context: $default-font-size) {
-    @if (unitless($pixels)) {
-        $pixels: $pixels * 1px;
-    }
+// ----------------------------------------------------------------------------
+// Utilities
+// ----------------------------------------------------------------------------
 
-    @if (unitless($context)) {
-        $context: $context * 1px;
-    }
+@import 'utils/bk';
+@import 'utils/em';
 
-    @return $pixels / $context * 1em;
-}
+// ----------------------------------------------------------------------------
+// Base
+// ----------------------------------------------------------------------------
 
-$content-width: 1600px;
+@import 'base/normalize';
+@import 'base/grid';
+@import 'base/typography';
 
-$breakpoints: (
-  small:  400px,
-  medium: 900px,
-  large:  1200px
-);
+@debug bk-cols('medium');
 
-$u: 6px;
+// ----------------------------------------------------------------------------
+// Objects
+// ----------------------------------------------------------------------------
 
-// Breakpoints
-$bk-small-minwidth: 400px;
-$bk-medium-minwidth: 900px;
-$bk-large-minwidth: 1200px;
+@import 'objects/section-centered';
 
-$bk-small-grid: 6;
-$bk-medium-grid: 12;
-$bk-large-grid: 12;
+// ----------------------------------------------------------------------------
+// Components
+// ----------------------------------------------------------------------------
 
-$bk-small-gutter: 1/3;
-$bk-medium-gutter: $bk-small-gutter;
-$bk-large-gutter: $bk-small-gutter;
-
-$color-brand: #5B13FE;
-
-
-// Configure grid settings
-@include sgs-change('debug', true);
-@include sgs-change('include border box', true);
-@include sgs-change('include clearfix', false);
-@include sgs-change('background grid color', #DDD);
-
-// Default small grid (mobile first)
-@include add-grid($bk-small-grid);
-@include add-gutter($bk-small-gutter);
-@include add-gutter-style('split');
-// Responsive grid
-@include add-grid($bk-medium-grid at $bk-medium-minwidth);
-
-
-%section--centered {
-    width: 100%;
-    max-width: $content-width;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-body  {
-    font-family: 'Helvetica Neue', Helcetica, Arial, sans-serif;
-    margin: 0;
-}
-
-
-::selection {
-    background-color: $color-brand;
-    color: #FFF;
-}
-
-
-.Logo {
-    $size: 1em;
-    $line-height: inherit;
-    $brand-border-width: em(5px);
-    $brand-border-color: $color-brand;
-    $brand-text-left-offset: em(3px);
-
-    font-size: $size;
-    line-height: $line-height;
-
-    &-brand {
-        position: relative;
-        display: inline-block;
-        box-sizing: border-box;
-        width: em(50px) + $brand-border-width;
-        height: em(50px) + $brand-border-width;
-        margin-top: 0;
-        margin-bottom: -100%; // remove increased line-height on first line of `&-text` due to paddings
-        margin-left: -14.6%;
-        font-size: 1em;
-        line-height: 1.2em;
-        text-transform: uppercase;
-        padding-left: $brand-text-left-offset;
-        // border-left: $brand-text-left-offset solid transparent;
-        border: $brand-border-width solid $brand-border-color;
-
-        > span {
-            display: block;
-            height: em(6px);
-        }
-
-        &:before {
-            content: '';
-            position: absolute;
-            left: 100%;
-            width: $brand-border-width;
-            height: 100%;
-            background-color: $brand-border-color;
-        }
-
-        &:after {
-            content: '';
-            position: absolute;
-            top: calc(50% - #{$brand-border-width / 2});
-            left: - $brand-text-left-offset;
-            right: 0;
-            height: $brand-border-width;
-            background-color: $brand-border-color;
-        }
-    }
-
-    &-tagline {
-        position: relative;
-        z-index: 1;
-        display: inline;
-        font-size: em(8px);
-        font-weight: bold;
-        margin-left: em(-36px);
-        vertical-align: baseline;
-    }
-}
-
-
-.Topbar {
-    @include clearfix;
-    @include background-grid;
-
-    &-topics {
-        @include grid-span($bk-small-grid / 2);
-    }
-
-    &-langNav {
-        text-align: right;
-        @include float-span(1, 'last');
-    }
-
-    @include layout-at($bk-medium-grid, $bk-medium-minwidth) {
-        @include background-grid;
-
-        &-topics {
-            @include grid-span($bk-medium-grid / 2);
-        }
-
-        &-langNav {
-            @include float-span(1, 'last');
-        }
-    }
-}
-
-
-.Intro {
-    @include clearfix;
-    @include background-grid;
-
-    padding-top: $u * 10;
-    padding-bottom: $u * 10;
-
-    &-logo {
-        @include grid-span(4, 2);
-        font-size: 40px;
-        line-height: 0.5em;
-    }
-
-    @include layout-at($bk-medium-grid, $bk-medium-minwidth) {
-        @include background-grid;
-
-        &-logo {
-            @include grid-span(7, 3);
-            font-size: 80px;
-            line-height: 0.5em;
-        }
-    }
-}
-
-
-.UpcomingEvent {
-    $padding: em(18px);
-    // box-sizing: border-box;
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    // width: 100%;
-    max-width: 200px;
-    min-width: 100px;
-    padding: $padding;
-    font-size: em(20px);
-    text-align: center;
-    color: #FFF;
-
-    &-title {
-        font-size: 1em;
-        margin: 0;
-    }
-
-    &-date {
-        font-size: 0.8em;
-        margin: 0;
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        // instead of a fixed height
-        padding-top: calc(100% + #{$padding * 2});
-        border-radius: 100%;
-        background-color: $color-brand;
-    }
-}
-
-
-.Home {
-    @extend %section--centered;
-    @include clearfix;
-    @include background-grid;
-    padding-top: $u * 5;
-
-    &-upcoming {
-        @include float-span(2, 'last');
-        margin-top: -100px;
-        text-align: right;
-    }
-
-    &-text {
-        @include grid-span(4, 2);
-        font-size: em(20px);
-    }
-
-    @include layout-at($bk-medium-grid, $bk-medium-minwidth) {
-        &-upcoming {
-            @include float-span(2, 'last');
-            font-size: em(24px);
-        }
-
-        &-text {
-            @include grid-span(6, 2);
-        }
-    }
-}
-
-
-.About {
-    @extend %section--centered;
-}
-
-
-.Header {
-    @extend %section--centered;
-}
-
-
-.Footer {
-    @extend %section--centered;
-}
-
-
-.Menu {
-    &-link {
-        padding-left: $u;
-        padding-right: $u;
-        text-transform: uppercase;
-    }
-}
-
-
-.Link {
-    &.is-current {
-        color: #999;
-        text-decoration: none;
-    }
-}
+@import 'components/about';
+@import 'components/footer';
+@import 'components/header';
+@import 'components/home';
+@import 'components/intro';
+@import 'components/link';
+@import 'components/logo';
+@import 'components/menu';
+@import 'components/topbar';
+@import 'components/upcoming-event';

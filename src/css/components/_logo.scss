@@ -1,0 +1,61 @@
+.Logo {
+    $size: 4em;
+    $line-height: 1;
+    $brand-border-width: em(5px);
+    $brand-border-color: $brand-color;
+    $brand-text-left-offset: em(3px);
+
+    font-size: $size;
+    line-height: $line-height;
+
+    &-brand {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        width: em(50px) + $brand-border-width;
+        height: em(50px) + $brand-border-width;
+        margin-top: 0;
+        margin-bottom: -100%; // remove increased line-height on first line of `&-text` due to paddings
+        margin-left: -14.6%;
+        font-size: 1em;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        padding-left: $brand-text-left-offset;
+        // border-left: $brand-text-left-offset solid transparent;
+        border: $brand-border-width solid $brand-border-color;
+
+        > span {
+            display: block;
+            height: em(6px);
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 100%;
+            width: $brand-border-width;
+            height: 100%;
+            background-color: $brand-border-color;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: calc(50% - #{$brand-border-width / 2});
+            right: 0;
+            left: - $brand-text-left-offset;
+            height: $brand-border-width;
+            background-color: $brand-border-color;
+        }
+    }
+
+    &-tagline {
+        position: relative;
+        z-index: 1;
+        display: inline;
+        margin-left: em(-36px);
+        font-size: em(8px);
+        font-weight: bold;
+        vertical-align: baseline;
+    }
+}

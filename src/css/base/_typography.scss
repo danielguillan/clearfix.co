@@ -1,0 +1,13 @@
+html {
+    font-family: $base-font-family;
+    font-style: normal;
+    font-size: 100%;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'kern', 'liga';
+    hyphens: auto;
+}
+
+::selection {
+    background-color: $brand-color;
+    color: #FFF;
+}

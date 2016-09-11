@@ -1,0 +1,25 @@
+.Intro {
+    @include clearfix;
+    @include background-grid;
+
+    padding-top: $u * 10;
+    padding-bottom: $u * 10;
+
+    &-logo {
+        @include grid-span(4, 2);
+
+        font-size: 40px;
+        line-height: 0.5em;
+    }
+
+    @include layout-at(bk-cols('medium'), bk-mq('medium')) {
+        @include background-grid;
+
+        &-logo {
+            @include grid-span(7, 3);
+
+            font-size: 80px;
+            line-height: 0.5em;
+        }
+    }
+}

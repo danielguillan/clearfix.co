@@ -1,0 +1,25 @@
+.Topbar {
+    @include clearfix;
+    @include background-grid;
+
+    &-topics {
+        @include grid-span(bk-cols(small) / 2);
+    }
+
+    &-langNav {
+        text-align: right;
+        @include float-span(1, 'last');
+    }
+
+    @include layout-at(bk-cols('medium'), bk-mq('medium')) {
+        @include background-grid;
+
+        &-topics {
+            @include grid-span(bk-cols('medium') / 2);
+        }
+
+        &-langNav {
+            @include float-span(1, 'last');
+        }
+    }
+}
